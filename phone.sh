@@ -1,0 +1,11 @@
+if [ $# -eq 0 ]
+then
+        echo "Usage: phone searchfor [… searchfor]"
+        echo "(You didn’t tell me what you want to search for.)"
+        exit
+elif [ $# -eq 1 ]
+then
+        egrep "$1" mydata | awk -f display.awk
+else
+        egrep "($1|$2)" mydata | awk -f display.awk
+fi
